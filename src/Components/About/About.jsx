@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 
-import About1 from '../../assets/img/about/books.png';
-import About2 from '../../assets/img/about/journal.png';
-import About3 from '../../assets/img/about/pen.png';
+
+// import About1 from '../../assets/img/about/books.png';
+// import About2 from '../../assets/img/about/journal.png';
+// import About3 from '../../assets/img/about/pen.png';
 
 // motion
 import { motion } from 'framer-motion'
