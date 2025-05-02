@@ -52,8 +52,7 @@ const About = () => {
                 Maerika2k24
               </h1>
               <p className="mt-4 text-base lg:text-lg leading-relaxed">
-              **Maerika2K24 Arts Fest** is a dynamic celebration of creativity, held in the masjid Dars to inspire and develop the artistic talents of students. This event provides a platform for young individuals to explore their artistic potential and express themselves in a supportive and enriching environment. By fostering imagination and skill development, Maerika2K24 strengthens community connections and encourages a culture of creativity. With engaging activities and opportunities for artistic growth, the fest serves as a meaningful space where students can refine their talents and share their passion with others.
-
+              **Maerika2K24 Arts Fest** is a dynamic celebration of creativity, held in the masjid Dars to inspire and develop the artistic talents of students. This event provides a platform for young individuals to explore their artistic potential 
               </p>
             </div>
           </motion.section>
