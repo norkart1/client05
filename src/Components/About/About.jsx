@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 
 
-// import About1 from '../../assets/img/about/books.png';
-// import About2 from '../../assets/img/about/journal.png';
-// import About3 from '../../assets/img/about/pen.png';
+import About1 from '../../assets/img/about/books.png';
+import About2 from '../../assets/img/about/journal.png';
+import About3 from '../../assets/img/about/pen.png';
 
 // motion
 import { motion } from 'framer-motion'
@@ -16,15 +16,15 @@ const About = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(true);
   const carouselRef = useRef(null);
-
+  
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex(prev => (prev + 1) % images.length);
     }, 3000);
-
+    
     return () => clearInterval(interval);
   }, []);
-
+  
   useEffect(() => {
     if (currentImageIndex === 3) {
       setTimeout(() => {
@@ -36,7 +36,7 @@ const About = () => {
       }, 500);
     }
   }, [currentImageIndex]);
-
+  
   return (
     <section className="h-screen py-12 flex justify-center">
       <div className="w-full flex justify-center items-center h-full">
