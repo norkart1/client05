@@ -57,11 +57,11 @@ export default defineConfig({
         ]
       },
       manifest: {
-        name: 'Funoon Fiesta',
-        short_name: 'Funoon',
-        description: 'Funoon Fiesta Art Fest Result Management',
-        theme_color: '#f5f0ec',
-        background_color: '#f5f0ec',
+        name: 'Maerika2k24',
+        short_name: 'Maerika2k24',
+        description: 'Maerika2k24 Art Fest Result Management',
+        theme_color: '#a8ed9f',
+        background_color: '#a7d19b',
         display: 'standalone',
         icons: [
           {

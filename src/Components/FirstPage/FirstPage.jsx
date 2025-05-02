@@ -29,10 +29,10 @@ const FirstPage = () => {
             className="hidden md:block w-full md:w-full text-start md:text-left mb-8 md:mb-0">
             <div className="max-w-6xl mx-auto md:mx-0">
               <h1 className="text-3xl md:text-6xl font-semibold groupnumbers mb-4 text-secondery">
-                Welcome to Funoon Fiesta
+                Welcome to Maerika2k24
               </h1>
               <p className="mb-6 text-base md:text-lg text-gray-600 dark:text-white">
-                Funoon Fiesta is a premier platform for students to showcase their talents. It highlights the rich art forms of Islamic culture, presenting them to a wider audience. The event fosters creativity, cultural appreciation, and artistic expression.
+                Maerika2k24 is a premier platform for students to showcase their talents. It highlights the rich art forms of Islamic culture, presenting them to a wider audience. The event fosters creativity, cultural appreciation, and artistic expression.
               </p>
               <button
                 type="button"
@@ -53,7 +53,7 @@ const FirstPage = () => {
             className=" md:flex w-3/4 justify-end items-center">
             <img
               src={HomeImg}
-              alt="Funoon Fiesta Logo"
+              alt="Maerika2k24 Logo"
               className="max-w-[300px] w-full h-auto object-contain"
             />
           </motion.div>
@@ -66,7 +66,7 @@ const FirstPage = () => {
             className="flex flex-col gap-5 md:hidden w-3/4 justify-end items-center mt-5">
             <img
               src={HomeTxt}
-              alt="Funoon Fiesta Logo"
+              alt="Maerika2k24 Logo"
               className="max-w-[500px] w-full h-auto object-contain"
             />
             <motion.button
