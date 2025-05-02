@@ -60,8 +60,8 @@ export default defineConfig({
         name: 'Maerika2k24',
         short_name: 'Maerika2k24',
         description: 'Maerika2k24 Art Fest Result Management',
-        theme_color: '#a8ed9f',
-        background_color: '#a7d19b',
+        theme_color: '#A8ED9F',
+        background_color: '#A7D19B',
         display: 'standalone',
         icons: [
           {
