@@ -8,8 +8,8 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: '#D63C3E',
-        secondery: '#DB3F43',
+        primary: '#d63c3e',
+        secondery: '#22d91c',
       },
       fontFamily: {
         sans: ['Nexa', 'sans-serif'],
