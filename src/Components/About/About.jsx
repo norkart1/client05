@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 
-
+import About1 from '../../assets/img/about/books.png';
 import About2 from '../../assets/img/about/journal.png';
 import About3 from '../../assets/img/about/pen.png';
 
@@ -49,10 +49,14 @@ const About = () => {
           className="w-full md:w-3/5 flex justify-center items-center">
             <div className="w-3/4 text-center md:text-left mt-12 md:mt-0">
               <h1 className="text-4xl lg:text-7xl font-semibold text-primary">
-                Maerika2k24
+                Funoon Fiesta
               </h1>
               <p className="mt-4 text-base lg:text-lg leading-relaxed">
-              Maerika2K24 Arts Fest is a dynamic celebration of creativity, held in the masjid Dars to inspire and develop the artistic talents of students. This event provides a platform for young individuals to explore their artistic potential 
+              The new society tries to break the Islamic cultures and live according to 
+              the new rational thinking freely without rules and regulations.  
+              The world is preparing an opportunity for that.  But the true believer 
+              who lives without giving up Islamic values ​​in any crisis presents the moral 
+              and cultural values ​​of the believer to the world through Funun Fiesta.
               </p>
             </div>
           </motion.section>
