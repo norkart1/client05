@@ -17,14 +17,10 @@ const About = () => {
             className="w-full md:w-3/5 flex justify-center items-center">
             <div className="w-3/4 text-center md:text-left mt-12 md:mt-0">
               <h1 className="text-4xl lg:text-7xl font-semibold text-primary">
-                Funoon Fiesta
+                Maerika2k24
               </h1>
               <p className="mt-4 text-base lg:text-lg leading-relaxed">
-                The new society tries to break the Islamic cultures and live according to 
-                the new rational thinking freely without rules and regulations.  
-                The world is preparing an opportunity for that. But the true believer 
-                who lives without giving up Islamic values in any crisis presents the moral 
-                and cultural values of the believer to the world through Funoon Fiesta.
+               Maerika2k24 is a premier platform for students to showcase their talents. It highlights the rich art forms of Islamic culture, presenting them to a wider audience. The event fosters creativity, cultural appreciation, and artistic expression.
               </p>
             </div>
           </motion.section>
