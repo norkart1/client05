@@ -52,7 +52,7 @@ const About = () => {
                 Maerika2k24
               </h1>
               <p className="mt-4 text-base lg:text-lg leading-relaxed">
-              **Maerika2K24 Arts Fest** is a dynamic celebration of creativity, held in the masjid Dars to inspire and develop the artistic talents of students. This event provides a platform for young individuals to explore their artistic potential 
+              Maerika2K24 Arts Fest is a dynamic celebration of creativity, held in the masjid Dars to inspire and develop the artistic talents of students. This event provides a platform for young individuals to explore their artistic potential 
               </p>
             </div>
           </motion.section>
