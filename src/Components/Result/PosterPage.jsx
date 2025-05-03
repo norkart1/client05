@@ -1,246 +1,45 @@
-import React, { useEffect, useState } from 'react';
-import { Trophy } from 'lucide-react';
-import { useParams } from 'react-router-dom';
-import EnhancedPoster from './WinnerPoster';
-import { useResults } from '../../../context/DataContext';
-import { motion } from 'framer-motion';
-import onStage from '../../assets/img/poster/1.jpeg';
-import offStage from '../../assets/img/poster/2.jpeg';
-import img from '../../assets/img/poster/1.jpeg';
-import img1 from '../../assets/img/poster/2.jpeg';
-import img2 from '../../assets/img/poster/3.jpeg';
+import React from "react";
+import { Trophy, User } from "lucide-react";
 
-const STORAGE_KEY = 'programWinners';
-const PROGRAM_DATA_KEY = 'programData';
-
-// Define prize points
-const prizePoints = {
-  'FIRST': 10,
-  'SECOND': 8,
-  'THIRD': 6
-};
-
-const PosterPage = () => {
-  const { programName } = useParams();
-  const { results } = useResults();
-  const [programWinners, setProgramWinners] = useState([]);
-  const [programData, setProgramData] = useState({
-    category: "",
-    stage: "ON STAGE"
-  });
-
-  const posterBackgrounds = [img, img1, img2];
-
-  const getMedalEmoji = (index) => {
-    switch (index) {
-      case 0: return "🥇";
-      case 1: return "🥈";
-      case 2: return "🥉";
-      default: return "🏅";
-    }
+const Leaderboard = () => {
+  const winners = [
+    { name: "Anna", team: "Red Phoenix", position: "1st" },
+    { name: "Leo", team: "Blue Dragon", position: "2nd" },
+    { name: "Mia", team: "Green Tiger", position: "3rd" },
+  ];
+  
+  const positionColors = {
+    "1st": "from-lime-400 via-green-500 to-emerald-600",
+    "2nd": "from-green-300 via-green-400 to-green-500",
+    "3rd": "from-emerald-300 via-emerald-400 to-emerald-500",
   };
-
-  // Animation variants
-  const fadeInUp = {
-    hidden: { 
-      opacity: 0,
-      y: 20
-    },
-    show: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        type: "spring",
-        duration: 0.5,
-        bounce: 0.3
-      }
-    }
-  };
-
-  const staggerContainer = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2
-      }
-    }
-  };
-
-  // Load cached data on component mount
-  useEffect(() => {
-    const loadCachedData = () => {
-      try {
-        const cachedWinners = localStorage.getItem(`${STORAGE_KEY}_${programName}`);
-        const cachedProgramData = localStorage.getItem(`${PROGRAM_DATA_KEY}_${programName}`);
-        
-        if (cachedWinners) {
-          setProgramWinners(JSON.parse(cachedWinners));
-        }
-        
-        if (cachedProgramData) {
-          setProgramData(JSON.parse(cachedProgramData));
-        }
-      } catch (error) {
-        console.error('Error loading cached data:', error);
-      }
-    };
-
-    loadCachedData();
-  }, [programName]);
-
-  // Update data when results change and cache it
-  useEffect(() => {
-    if (results.length > 0 && programName) {
-      const programResults = results.filter(
-        result => result.programName.toUpperCase() === programName.toUpperCase()
-      );
-
-      const programInfo = programResults[0];
-
-      // Sort by prize order: FIRST, SECOND, THIRD
-      const sortedResults = programResults.sort((a, b) => {
-        const prizeOrder = { 'FIRST': 1, 'SECOND': 2, 'THIRD': 3 };
-        return prizeOrder[a.prize] - prizeOrder[b.prize];
-      });
-
-      // Map only prize winners to the format needed for the poster
-      const formattedResults = sortedResults
-        .filter(result => result.prize) // Only include results with prizes
-        .slice(0, 3) // Take top 3
-        .map((winner, index) => ({
-          fields: {
-            Place: (index + 1).toString(),
-            Name: winner.studentName || "---",
-            Team: winner.teamName || "Individual"
-          }
-        }));
-
-      // Fill in any missing places up to 3
-      while (formattedResults.length < 3) {
-        formattedResults.push({
-          fields: {
-            Place: (formattedResults.length + 1).toString(),
-            Name: "---",
-            Team: "---"
-          }
-        });
-      }
-
-      const newProgramData = {
-        category: programInfo?.category || "",
-        stage: programInfo?.stage || "ON STAGE"
-      };
-
-      // Update state
-      setProgramWinners(formattedResults);
-      setProgramData(newProgramData);
-
-      // Cache data
-      try {
-        localStorage.setItem(`${STORAGE_KEY}_${programName}`, JSON.stringify(formattedResults));
-        localStorage.setItem(`${PROGRAM_DATA_KEY}_${programName}`, JSON.stringify(newProgramData));
-      } catch (error) {
-        console.error('Error caching data:', error);
-      }
-    }
-  }, [results, programName]);
-
+  
   return (
-    <div className="min-h-screen p-4 md:p-8">
-      <div className="max-w-7xl mx-auto">
-        {/* Header Section */}
-        <motion.div 
-          variants={staggerContainer}
-          initial="hidden"
-          animate="show"
-          className="text-center mb-12"
-        >
-          <motion.div 
-            variants={fadeInUp}
-            className="inline-flex items-center justify-center gap-2 mb-4"
-          >
-            <Trophy className="w-8 h-8 text-yellow-500" />
-            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
-              {programName} Winners
-            </h1>
-            <Trophy className="w-8 h-8 text-yellow-500" />
-          </motion.div>
-          <motion.p 
-            variants={fadeInUp}
-            className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto"
-          >
-            Celebrating excellence and outstanding achievements in {programName}
-          </motion.p>
-        </motion.div>
-
-        {/* Winners Overview */}
-        <motion.div 
-          variants={staggerContainer}
-          initial="hidden"
-          animate="show"
-          className="w-full max-w-5xl mx-auto mb-16"
-        >
-          <div className="bg-gradient-to-r from-yellow-400/20 via-amber-500/20 to-yellow-400/20 rounded-2xl p-8">
-            <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-              {programWinners.map((winner, index) => (
-                <motion.div
-                  key={index}
-                  variants={fadeInUp}
-                  whileHover={{ 
-                    scale: 1.05,
-                    transition: { type: "spring", stiffness: 300, damping: 15 }
-                  }}
-                  className="flex items-center gap-4 bg-white/40 dark:bg-white/10 backdrop-blur-sm rounded-xl p-4 w-full md:w-auto"
-                >
-                  <div className="w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
-                    <span className="text-4xl">{getMedalEmoji(index)}</span>
-                  </div>
-                  <div>
-                    <h2 className="text-gray-900 dark:text-white font-bold text-lg">
-                      {winner.fields.Name}
-                    </h2>
-                    <p className="text-gray-600 dark:text-gray-400 text-sm">
-                      {winner.fields.Team}
-                    </p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </motion.div>
-
-        {/* Posters Grid */}
-        <motion.div 
-          variants={staggerContainer}
-          initial="hidden"
-          animate="show"
-          className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8 w-full"
-        >
-          {posterBackgrounds.map((bg, index) => (
-            <motion.div
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-r from-emerald-500/30 via-green-600/30 to-emerald-500/30 px-4 py-10">
+      <div className="max-w-4xl w-full bg-emerald-600/30 dark:bg-emerald-800/40 rounded-2xl shadow-lg backdrop-blur-md p-6 sm:p-10 text-white">
+        <h2 className="text-4xl font-bold mb-8 text-center flex items-center justify-center gap-2">
+          <Trophy className="text-yellow-300 animate-pulse" /> Leaderboard
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+          {winners.map((winner, index) => (
+            <div
               key={index}
-              variants={fadeInUp}
-              whileHover={{ 
-                scale: 1.02,
-                transition: { type: "spring", stiffness: 300, damping: 15 }
-              }}
-              className="flex justify-center"
+              className={`rounded-xl p-6 flex flex-col items-center text-center shadow-[0_0_20px_rgba(34,197,94,0.6)] bg-gradient-to-tr ${positionColors[winner.position]} text-white`}
             >
-              <EnhancedPoster
-                programName={programName}
-                programCategory={programData.category}
-                stage={programData.stage}
-                records={programWinners}
-                defaultBackground={programData.stage === "OFF STAGE" ? offStage : onStage}
-                backgroundImage={bg}
-              />
-            </motion.div>
+              <div className="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mb-4 shadow-md">
+                <User className="w-8 h-8 text-green-200" />
+              </div>
+              <h3 className="text-xl font-semibold">{winner.name}</h3>
+              <p className="text-emerald-100">{winner.team}</p>
+              <span className="mt-2 px-4 py-1 rounded-full bg-white/10 text-sm font-medium text-white shadow">
+                {winner.position}
+              </span>
+            </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </div>
   );
 };
 
-export default PosterPage;
+export default Leaderboard;
