@@ -181,7 +181,7 @@ const PosterPage = () => {
           animate="show"
           className="w-full max-w-5xl mx-auto mb-16"
         >
-          <div className="bg-gradient-to-r from-yellow-400/20 via-amber-500/20 to-yellow-400/20 rounded-2xl p-8">
+          <div className="bg-gradient-to-r from-green-400/20 via-amber-500/20 to-yellow-400/20 rounded-2xl p-8">
             <div className="flex flex-col md:flex-row items-center justify-between gap-8">
               {programWinners.map((winner, index) => (
                 <motion.div
